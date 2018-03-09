@@ -5,9 +5,9 @@ os:
 env:
  matrix:
   - PYTHON_VERSION=2.7
-  - PYTHON_VERSION=3.3
   - PYTHON_VERSION=3.4
   - PYTHON_VERSION=3.5
+  - PYTHON_VERSION=3.6
 
 before_install:
 #  - sudo apt-get update
@@ -15,23 +15,45 @@ before_install:
 #  - if [[ $TRAVIS_OS_NAME == linux ]]; then sudo apt-get install libc-bin=2.12.1-0ubuntu10.2 libc6=2.12.1-0ubuntu10.2; fi
   - echo $TRAVIS_TAG
   - if [ "$TRAVIS_TAG" != "" ]; then echo "bla"; fi
-  - if [[ $TRAVIS_OS_NAME == linux ]]; then wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh; fi
-  - if [[ $TRAVIS_OS_NAME == osx ]]; then wget https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh -O miniconda.sh; fi
+  - if [[ $TRAVIS_OS_NAME == linux ]]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi
+  - if [[ $TRAVIS_OS_NAME == osx ]]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda create -q -n test-environment python=$PYTHON_VERSION numpy scipy pyqt matplotlib pyopengl h5py numexpr astropy tornado cython pandas runipy
+  # future: kapteyn should only be needed for astro package testing  
+  - conda create -q -n test-environment -c conda-forge python=$PYTHON_VERSION pip numpy scipy pyqt matplotlib pyopengl h5py numexpr astropy tornado cython runipy pandas kapteyn pytest numba
+  - which pip
   - source activate test-environment
-  - pip install -r requirements.txt
+  - which pip
+  # - conda install -c conda-forge pandas kapteyn # these extra installs should disappear
+  # - conda create --name dev --clone test
+#  - pip install -r requirements.txt
 install:
-  - pip install -e .
+  - source activate test-environment
+  - (cd packages/vaex-core; pip install -v .)
+  - (cd packages/vaex-hdf5; pip install -v .)
+  - (cd packages/vaex-viz; pip install -v .)
+  - (cd packages/vaex-server; pip install -v .)
+  - (cd packages/vaex-astro; pip install -v .)
+  - (cd packages/vaex-distributed; pip install -v .)
+  - (cd packages/vaex-jupyter; pip install -v .)
+  - (cd packages/vaex-ui; pip install -v .)
+  # - source activate dev
+  # - (cd packages/vaex-core; pip install -v -.)
+  # - (cd packages/vaex-hdf5; pip install -v .)
+  # - (cd packages/vaex-viz; pip install -v .)
+  # - (cd packages/vaex-server; pip install -v .)
 script:
- - python -m vaex.test.dataset
- - runipy examples/tutorial_ipython_notebook.ipynb
- - runipy examples/advanced_plotting.ipynb
+  - source activate test-environment
+  - python -m vaex.test.dataset
+  - py.test tests/
+  # - runipy examples/tutorial_ipython_notebook.ipynb
+  # - runipy examples/advanced_plotting.ipynb
+  # - source activate dev
+  # - python -m vaex.test.dataset TestDataset
 # - export PACKAGE_NAME=`python -c "import vaex; print vaex.__build_name__"`
 # - python bin/make_dropbox_uploader_conf.py ~/.dropbox_uploader
 # - curl "https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh" -o dropbox_uploader.sh

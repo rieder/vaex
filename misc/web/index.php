@@ -174,7 +174,7 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-sm-4">
-          <a href="nyc_taxi_full.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-1" data-parent="" >
+          <a href="image/nyc_taxi_full.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-1" data-parent="" >
             <img class="img-circle" src="image/nyc_taxi_square.png" alt="Generic placeholder image" width="140" height="140">
           </a>
           <h2>Why use vaex</h2>
@@ -184,7 +184,7 @@
           <p><a class="btn btn-default page-scroll" href="#fast" role="button">Read more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-sm-4">
-          <a href="linked_views.png" data-toggle="lightbox" data-title="Helmi and de Zeeuw 2000" data-footer="Selection made on the right, also visible in the left"  data-gallery="gallery-1" data-parent="" >
+          <a href="image/linked_views.png" data-toggle="lightbox" data-title="Helmi and de Zeeuw 2000" data-footer="Selection made on the right, also visible in the left"  data-gallery="gallery-1" data-parent="" >
             <img class="img-circle" src="image/linked_views.png" alt="Generic placeholder image" width="140" height="140">
           </a>
           <h2>How does it work</h2>
@@ -192,7 +192,7 @@
           <p><a class="btn btn-default page-scroll" href="#explore" role="button">Read more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-sm-4">
-          <a href="notebook.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-2" data-parent="" >
+          <a href="image/notebook.png" data-toggle="lightbox" data-title="Vaex in the Jupyter notebook" data-footer=""  data-gallery="gallery-1" data-parent="" >
             <img class="img-circle" src="image/notebook.png" alt="Generic placeholder image" width="140" height="140">
           </a>
           <h2>What is vaex</h2>
@@ -225,7 +225,7 @@
             </p>
         </div>
         <div class="col-md-4">
-          <a href="nyc_taxi_full.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-2" data-parent="" >
+          <a href="image/nyc_taxi_full.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-2" data-parent="" >
           <img class="featurette-image img-responsive center-block" src="image/nyc_taxi_square.png" alt="Generic placeholder image">
           </a>
         </div>
@@ -250,7 +250,7 @@
           </p>-->
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <a href="linked_views.png" data-toggle="lightbox" data-title="Helmi and de Zeeuw 2000" data-footer="Selection made on the right, also visible in the left"  data-gallery="global-gallery-2" data-parent="" >
+          <a href="image/linked_views.png" data-toggle="lightbox" data-title="Helmi and de Zeeuw 2000" data-footer="Selection made on the right, also visible in the left"  data-gallery="global-gallery-2" data-parent="" >
             <img class="featurette-image img-responsive center-block" src="image/linked_views.png" alt="Generic placeholder image">
           </a>
         </div>
@@ -375,7 +375,7 @@ dataset.plot("Lz", "E", f="log1p", show=True)
 <a href="#" data-target="#myCarousel-code" data-slide-to="1">See next example, with a larger dataset</a>
               </div>
               <div class="col-md-4">
-                <a href="Lz-E.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-2" data-parent="" >
+                <a href="image/Lz-E.png" data-toggle="lightbox" data-title="Energy vs angular momented" data-footer=""  data-gallery="gallery-2" data-parent="" >
                 <img class="featurette-image img-responsive center-block" src="image/Lz-E.png" alt="Generic placeholder image">
                 </a>
               </div>
@@ -390,13 +390,13 @@ dataset.plot("Lz", "E", f="log1p", show=True)
       From the IPython/Jupter notebook, run
 <pre><code class="python">import vaex as vx
 dataset = vx.datasets.nyctaxi_yellow_201x.fetch() # get a cup of coffee while this downloads
-dataset.plot_bq("pickup_longitude","pickup_latitude", f="log1p")
+dataset.plot_widget("pickup_longitude","pickup_latitude", f="log1p")
 </code></pre>
 The plot is interactive, meaning you can zoom in and out and the plot will be updated.
 You will need about, ~15BG or free memory for a proper performance, or replace <code>nyc_taxi</code> by <code>nyc_taxi_2015</code> for a subset.
               </div>
               <div class="col-md-4">
-                <a href="nyc_taxi_full.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-2" data-parent="" >
+                <a href="image/nyc_taxi_full.png" data-toggle="lightbox" data-title="New York City Taxi pickup locations" data-footer=""  data-gallery="gallery-2" data-parent="" >
                 <img class="featurette-image img-responsive center-block" src="image/nyc_taxi_square.png" alt="Generic placeholder image">
                 </a>
               </div>
@@ -459,22 +459,16 @@ You will need about, ~15BG or free memory for a proper performance, or replace <
                 <li>
                     See the <a href="http://www.cosmos.esa.int/web/gaia/home">Gaia Science Homepage for details</a>, and you may want to try the <a href="https://archives.esac.esa.int/gaia">Gaia Archive</a> for ADQL (SQL like) queries.
                 </li>
-                <li>
-                    If you use a torrent client like <a href="https://transmissionbt.com/">transmission</a> to download the files, please keep seeding/sharing.
-                </li>
             </ul>
             Data:
             <ul>
                 <li>
-                    Single hdf5 file, copy of <a href="http://cdn.gea.esac.esa.int/Gaia/gaia_source/fits/">full Gaia DR1 catalogue</a> in random row order: <a href="data/gaia-dr1.hdf5.torrent">torrent</a> or <a href="https://goo.gl/xM9icm">direct download</a> (342G).
+                    Single hdf5 file, copy of <a href="http://cdn.gea.esac.esa.int/Gaia/gaia_source/fits/">full Gaia DR1 catalogue</a> in random row order: <a href="https://drive.google.com/file/d/0B8gjQokMGa4nUVc1bURQWVJNcnM/view?usp=sharing">direct download</a> (351G).
                 </li>
 		<li>
-			random 10% of the catalogue, useful for on your laptop: <a href="https://goo.gl/ZwUa0T">direct link</a> (35G).
+			random 10% of the catalogue, useful for on your laptop: <a href="https://drive.google.com/file/d/0B8gjQokMGa4nZWRvVXY5blQyaDg/view?usp=sharing">direct link</a> (35G).
                 <li>
-                    random 1% of the catalogue, useful for on your laptop: <a href="data/gaia-dr1-1percent.hdf5.torrent">torrent</a> or <a href="https://goo.gl/uo2a2t">direct link</a> (3.4G).
-                </li>
-                <li>
-                    All rows, but just l,b,ra,dec and g magnitude: <a href="data/gaia-dr1-essential.hdf5.torrent">gaia-dr1-essential.hdf5.torrent</a> (43G).
+                    All rows, less columns (ra, dec, l, b,ra,dec, g magnitude, etc): <a href="https://drive.google.com/file/d/0B8gjQokMGa4nOF9YT2s5TE1aeW8/view?usp=sharing">direct download</a> (43G).
                 </li>
                 <li>
                     Single hdf5 file, copy of <a href="http://cdn.gea.esac.esa.int/Gaia/gaia_source/fits/">full TGAS catalogue</a>: <a href="data/tgas.hdf5">tgas-hdf5</a> (0.6G).
